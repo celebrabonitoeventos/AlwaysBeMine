@@ -4,9 +4,6 @@ Welcome to our Valentine Proposal Website template! 💖<br/>
 AlwaysBeMine is a fun and romantic project created to ask someone special, "Will you be my Valentine?" This simple and heartfelt idea combines coding creativity and love to make a meaningful and memorable moment and it's sure to melt hearts and create lasting memories. Perfect for anyone looking to express their feelings in a unique way! ❤️
 ## Features
 
-- Customizable Card:
-  - Personalize your Valentine's Day card with your own messages and photos.
-
 - Interactive Elements:
   - Add interactive elements like animations, music, or surprise pop-ups.
   
@@ -17,4 +14,3 @@ AlwaysBeMine is a fun and romantic project created to ask someone special, "Will
 
 Happy Valentine's Day! 💘
 ---
-
