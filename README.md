@@ -12,5 +12,4 @@ AlwaysBeMine is a fun and romantic project created to ask someone special, "Will
   - Share your virtual card via email, social media, or as a printable PDF.
 
 ## 
-
 Happy Valentine's Day! 💘
