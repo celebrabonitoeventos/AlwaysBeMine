@@ -32,7 +32,8 @@ import nomusic2 from "./assets/AudioTracks/Reject_withoutMe.mp3";
 import nomusic3 from "./assets/AudioTracks/Neutral_Base_IHateU.mp3";
 import nomusic4 from "./assets/AudioTracks/Reject1_TooGood.mp3";
 
-import heartGif from "./assets/GifData/Heart.gif";
+// import heartGif from "./assets/GifData/Heart.gif";
+import heartGif from "./assets/GifData/Happy.gif";
 import sadGif from "./assets/GifData/sad.gif";
 
 const YesGifs = [yesgif0, yesgif1, yesgif2, yesgif3, yesgif4, yesgif5, yesgif6, yesgif7, yesgif8];
