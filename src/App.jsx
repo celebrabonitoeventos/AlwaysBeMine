@@ -181,8 +181,13 @@ export default function Page() {
       currentAudio.currentTime = 0; // Reset to the start
     }
     const audio = new Audio(url);
-    audio.muted = isMuted; // Respect the mute state
+    audio.muted = isMuted;
     setCurrentAudio(audio); // Set the new audio as the current one
+    audio.addEventListener('ended', () => {
+      const currentIndex = YesMusic.indexOf(url); 
+      const nextIndex = (currentIndex + 1) % YesMusic.length;
+      playMusic(YesMusic[nextIndex]); // Play the next song
+    });
     audio.play();
   };
 
