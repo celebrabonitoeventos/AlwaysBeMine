@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import Spline from "@splinetool/react-spline"; // Import the Spline component
 import { BsVolumeUpFill, BsVolumeMuteFill } from "react-icons/bs";
 
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
@@ -138,59 +139,64 @@ export default function Page() {
   };
 
   return (
-    <div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-16 selection:bg-rose-600 selection:text-white text-zinc-900">
-      {yesPressed ? (
-        <>
-          <img
-            ref={gifRef} // Attach ref to the gif
-            className="h-[230px] rounded-lg"
-            src={YesGifs[currentGifIndex]} // Always use the Yes GIFs in sequence
-            alt="Yes Response"
-          />
-          <div className="text-4xl md:text-6xl font-bold my-4">Ok Yayyyyy!!!</div>
-        </>
-      ) : (
-        <>
-          <img
-            src={lovesvg}
-            className="fixed animate-pulse top-10 md:left-15 left-6 md:w-40 w-28"
-            alt="Love SVG"
-          />
-          <img
-            ref={gifRef} // Attach ref to the gif
-            className="h-[230px] rounded-lg"
-            src={Lovegif}
-            alt="Love Animation"
-          />
-          <h1 className="text-4xl md:text-6xl my-4 text-center">
-            Will you be my Valentine?
-          </h1>
-          <div className="flex flex-wrap justify-center gap-2 items-center">
-            <button
-              className={`bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg mr-4`}
-              style={{ fontSize: yesButtonSize }}
-              onClick={handleYesClick}
-            >
-              Yes
-            </button>
-            <button
-              onClick={handleNoClick}
-              className="bg-rose-500 hover:bg-rose-600 rounded-lg text-white font-bold py-2 px-4"
-            >
-              {noCount === 0 ? "No" : getNoButtonText()}
-            </button>
-          </div>
-        </>
-      )}
-      {/* Mute/Unmute button */}
-      <button
-        className="fixed bottom-10 right-10 bg-gray-200 p-2 rounded-full hover:bg-gray-300"
-        onClick={toggleMute}
-      >
-        {isMuted ? <BsVolumeMuteFill size={26} /> : <BsVolumeUpFill size={26} />}
-      </button>
-      <Footer />
-    </div>
+    <>
+      <div className="fixed top-0 left-0 w-screen h-screen -z-10">
+        <Spline scene="https://prod.spline.design/oSxVDduGPlsuUIvT/scene.splinecode" />
+        {/* <Spline scene="https://prod.spline.design/ZU2qkrU9Eyt1PHBx/scene.splinecode" /> */}
+      </div>
+      <div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-16 selection:bg-rose-600 selection:text-white text-zinc-900">
+        {yesPressed ? (
+          <>
+            <img
+              ref={gifRef} // Attach ref to the gif
+              className="h-[230px] rounded-lg"
+              src={YesGifs[currentGifIndex]} // Always use the Yes GIFs in sequence
+              alt="Yes Response"
+            />
+            <div className="text-4xl md:text-6xl font-bold my-4">Ok Yayyyyy!!!</div>
+          </>
+        ) : (
+          <>
+            <img
+              src={lovesvg}
+              className="fixed animate-pulse top-10 md:left-15 left-6 md:w-40 w-28"
+              alt="Love SVG"
+            />
+            <img
+              ref={gifRef} // Attach ref to the gif
+              className="h-[230px] rounded-lg"
+              src={Lovegif}
+              alt="Love Animation"
+            />
+            <h1 className="text-4xl md:text-6xl my-4 text-center">
+              Will you be my Valentine?
+            </h1>
+            <div className="flex flex-wrap justify-center gap-2 items-center">
+              <button
+                className={`bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg mr-4`}
+                style={{ fontSize: yesButtonSize }}
+                onClick={handleYesClick}
+              >
+                Yes
+              </button>
+              <button
+                onClick={handleNoClick}
+                className="bg-rose-500 hover:bg-rose-600 rounded-lg text-white font-bold py-2 px-4"
+              >
+                {noCount === 0 ? "No" : getNoButtonText()}
+              </button>
+            </div>
+          </>
+        )}
+        <button
+          className="fixed bottom-10 right-10 bg-gray-200 p-1 mb-2 rounded-full hover:bg-gray-300"
+          onClick={toggleMute}
+        >
+          {isMuted ? <BsVolumeMuteFill size={26} /> : <BsVolumeUpFill size={26} />}
+        </button>
+        <Footer />
+      </div>
+    </>
   );
 }
 
@@ -202,10 +208,14 @@ const Footer = () => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      Made with {" "}
+      Made with{" "}
       <span role="img" aria-label="heart">
         ❤️
       </span>
     </a>
   );
 };
+
+
+// https://app.spline.design/file/48a9d880-40c9-4239-bd97-973aae012ee0
+// https://app.spline.design/file/72e6aee2-57ed-4698-afa7-430f8ed7bd87
