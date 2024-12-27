@@ -7,13 +7,14 @@ import Lovegif from "./assets/GifData/main_temp.gif";
 
 import yesgif0 from "./assets/GifData/Yes/lovecutie0.gif";
 import yesgif1 from "./assets/GifData/Yes/love2.gif";
-import yesgif2 from "./assets/GifData/Yes/love1.gif";
-import yesgif3 from "./assets/GifData/Yes/lovecutie1.gif";
-import yesgif4 from "./assets/GifData/Yes/lovecutie5.gif";
-import yesgif5 from "./assets/GifData/Yes/lovecutie7.gif";
-import yesgif6 from "./assets/GifData/Yes/lovecutie8.gif";
-import yesgif7 from "./assets/GifData/Yes/lovecutie3.gif";
-import yesgif8 from "./assets/GifData/Yes/lovecutie9.gif";
+import yesgif2 from "./assets/GifData/Yes/love3.gif";
+import yesgif3 from "./assets/GifData/Yes/love1.gif";
+import yesgif4 from "./assets/GifData/Yes/lovecutie1.gif";
+import yesgif5 from "./assets/GifData/Yes/lovecutie5.gif";
+import yesgif6 from "./assets/GifData/Yes/lovecutie7.gif";
+import yesgif7 from "./assets/GifData/Yes/lovecutie8.gif";
+import yesgif8 from "./assets/GifData/Yes/lovecutie3.gif";
+import yesgif9 from "./assets/GifData/Yes/lovecutie9.gif";
 
 import nogif0 from "./assets/GifData/No/breakRej0.gif";
 import nogif0_1 from "./assets/GifData/No/breakRej0_1.gif";
@@ -36,7 +37,7 @@ import nomusic4 from "./assets/AudioTracks/Reject1_TooGood.mp3";
 import heartGif from "./assets/GifData/Happy.gif";
 import sadGif from "./assets/GifData/sad.gif";
 
-const YesGifs = [yesgif0, yesgif1, yesgif2, yesgif3, yesgif4, yesgif5, yesgif6, yesgif7, yesgif8];
+const YesGifs = [yesgif0, yesgif1, yesgif2, yesgif3, yesgif4, yesgif5, yesgif6, yesgif7, yesgif8, yesgif9];
 const NoGifs = [nogif0, nogif0_1, nogif1, nogif2, nogif3, nogif4, nogif5, nogif6, nogif7];
 const YesMusic = [yesmusic1, yesmusic2];
 const NoMusic = [nomusic1, nomusic2, nomusic3, nomusic4];
