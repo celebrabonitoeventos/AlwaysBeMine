@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import { BsVolumeUpFill, BsVolumeMuteFill } from "react-icons/bs";
+
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
 import Lovegif from "./assets/GifData/main_temp.gif";
 
@@ -39,6 +41,8 @@ export default function Page() {
   const [yesPressed, setYesPressed] = useState(false);
   const [currentAudio, setCurrentAudio] = useState(null); // Tracks the currently playing song
   const [currentGifIndex, setCurrentGifIndex] = useState(0); // Track the current gif index
+  const [isMuted, setIsMuted] = useState(false); // Mute state
+
   const gifRef = useRef(null); // Ref to ensure gif plays infinitely
   const yesButtonSize = noCount * 20 + 16;
 
@@ -97,8 +101,16 @@ export default function Page() {
       currentAudio.currentTime = 0; // Reset to the start
     }
     const audio = new Audio(url);
+    audio.muted = isMuted; // Respect the mute state
     setCurrentAudio(audio); // Set the new audio as the current one
     audio.play();
+  };
+
+  const toggleMute = () => {
+    if (currentAudio) {
+      currentAudio.muted = !isMuted;
+    }
+    setIsMuted(!isMuted);
   };
 
   const getNoButtonText = () => {
@@ -170,6 +182,13 @@ export default function Page() {
           </div>
         </>
       )}
+      {/* Mute/Unmute button */}
+      <button
+        className="fixed bottom-10 right-10 bg-gray-200 p-2 rounded-full hover:bg-gray-300"
+        onClick={toggleMute}
+      >
+        {isMuted ? <BsVolumeMuteFill size={26} /> : <BsVolumeUpFill size={26} />}
+      </button>
       <Footer />
     </div>
   );
@@ -183,7 +202,7 @@ const Footer = () => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      Made with{" "}
+      Made with {" "}
       <span role="img" aria-label="heart">
         ❤️
       </span>
