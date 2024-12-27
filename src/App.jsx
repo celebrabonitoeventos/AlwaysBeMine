@@ -114,6 +114,7 @@ export default function Page() {
   };
 
   const getNoButtonText = () => {
+
     const phrases = [
       "No",
       "Are you sure?",
@@ -125,15 +126,23 @@ export default function Page() {
       "Give it another thought!",
       "Are you absolutely certain?",
       "This could be a mistake!",
-      "Have a heart!",
+      "U Have a heart!💕",
       "Don't be so cold!",
-      "Change of heart?",
       "Wouldn't you reconsider?",
       "Is that your final answer?",
       "You're breaking my heart ;(",
-      "Plsss? :( You're breaking my heart",
+      "But... why? 😢",
+      "Please, pretty please? 💖",
+      "I can't take this! 😫",
+      "Are you sure you want to do this to me? 😢",
+      "You're gonna hurt my feelings! 😥",
+      "I need you to reconsider, like now! 😓",
+      "I believe in you, don't disappoint me! 💔",
+      "My heart says yes, what about yours? ❤️",
+      "Don't leave me hanging! 😬",
+      "Plsss? :( You're breaking my heart 💔",
     ];
-
+    
     return phrases[Math.min(noCount, phrases.length - 1)];
   };
 
