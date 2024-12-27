@@ -32,6 +32,9 @@ import nomusic2 from "./assets/AudioTracks/Reject_withoutMe.mp3";
 import nomusic3 from "./assets/AudioTracks/Neutral_Base_IHateU.mp3";
 import nomusic4 from "./assets/AudioTracks/Reject1_TooGood.mp3";
 
+import heartGif from "./assets/GifData/Heart.gif";
+import sadGif from "./assets/GifData/sad.gif";
+
 const YesGifs = [yesgif0, yesgif1, yesgif2, yesgif3, yesgif4, yesgif5, yesgif6, yesgif7, yesgif8];
 const NoGifs = [nogif0, nogif0_1, nogif1, nogif2, nogif3, nogif4, nogif5, nogif6, nogif7];
 const YesMusic = [yesmusic1, yesmusic2];
@@ -46,6 +49,74 @@ export default function Page() {
 
   const gifRef = useRef(null); // Ref to ensure gif plays infinitely
   const yesButtonSize = noCount * 20 + 16;
+
+  const [floatingGifs, setFloatingGifs] = useState([]); // Array to store active floating GIFs
+  const generateRandomPositionWithSpacing = (existingPositions) => {
+    let position;
+    let tooClose;
+    const minDistance = 15; // Minimum distance in 'vw' or 'vh'
+  
+    do {
+      position = {
+        top: `${Math.random() * 90}vh`, // Keep within 90% of viewport height
+        left: `${Math.random() * 90}vw`, // Keep within 90% of viewport width
+      };
+  
+      tooClose = existingPositions.some((p) => {
+        const dx = Math.abs(parseFloat(p.left) - parseFloat(position.left));
+        const dy = Math.abs(parseFloat(p.top) - parseFloat(position.top));
+        return Math.sqrt(dx * dx + dy * dy) < minDistance;
+      });
+    } while (tooClose);
+  
+    return position;
+  };
+  
+  const handleMouseEnterYes = () => {
+    const gifs = [];
+    const positions = [];
+  
+    for (let i = 0; i < 10; i++) {
+      const newPosition = generateRandomPositionWithSpacing(positions);
+      positions.push(newPosition);
+  
+      gifs.push({
+        id: `heart-${i}`,
+        src: heartGif,
+        style: {
+          ...newPosition,
+          animationDuration: `${Math.random() * 2 + 1}s`, // Randomize animation speed
+        },
+      });
+    }
+  
+    setFloatingGifs(gifs);
+  };
+  
+  const handleMouseEnterNo = () => {
+    const gifs = [];
+    const positions = [];
+  
+    for (let i = 0; i < 10; i++) {
+      const newPosition = generateRandomPositionWithSpacing(positions);
+      positions.push(newPosition);
+  
+      gifs.push({
+        id: `sad-${i}`,
+        src: sadGif,
+        style: {
+          ...newPosition,
+          animationDuration: `${Math.random() * 2 + 1}s`, // Randomize animation speed
+        },
+      });
+    }
+  
+    setFloatingGifs(gifs);
+  };
+  
+  const handleMouseLeave = () => {
+    setFloatingGifs([]); // Clear the floating GIFs on mouse leave
+  };
 
   // This ensures the "Yes" gif keeps restarting and playing infinitely
   useEffect(() => {
@@ -181,6 +252,8 @@ export default function Page() {
             </h1>
             <div className="flex flex-wrap justify-center gap-2 items-center">
               <button
+                onMouseEnter={handleMouseEnterYes}
+                onMouseLeave={handleMouseLeave}
                 className={`bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg mr-4`}
                 style={{ fontSize: yesButtonSize }}
                 onClick={handleYesClick}
@@ -188,12 +261,23 @@ export default function Page() {
                 Yes
               </button>
               <button
+                onMouseEnter={handleMouseEnterNo}
+                onMouseLeave={handleMouseLeave}
                 onClick={handleNoClick}
                 className="bg-rose-500 hover:bg-rose-600 rounded-lg text-white font-bold py-2 px-4"
               >
                 {noCount === 0 ? "No" : getNoButtonText()}
               </button>
             </div>
+            {floatingGifs.map((gif) => (
+              <img
+                key={gif.id}
+                src={gif.src}
+                alt="Floating Animation"
+                className="absolute w-12 h-12 animate-bounce"
+                style={gif.style}
+              />
+            ))}
           </>
         )}
         <button
@@ -224,5 +308,7 @@ const Footer = () => {
   );
 };
 
+
+// ! Pathways-
 // https://app.spline.design/file/48a9d880-40c9-4239-bd97-973aae012ee0
 // https://app.spline.design/file/72e6aee2-57ed-4698-afa7-430f8ed7bd87
