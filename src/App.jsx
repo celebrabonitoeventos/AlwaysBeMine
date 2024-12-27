@@ -57,7 +57,7 @@ export default function Page() {
   const [isMuted, setIsMuted] = useState(false);
 
   const gifRef = useRef(null); // Ref to ensure gif plays infinitely
-  const yesButtonSize = noCount * 20 + 16;
+  const yesButtonSize = noCount * 16 + 16;
 
   const [floatingGifs, setFloatingGifs] = useState([]); // Array to store active floating GIFs
   const generateRandomPositionWithSpacing = (existingPositions) => {
