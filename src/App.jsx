@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Spline from "@splinetool/react-spline"; // Import the Spline component
+import Spline from "@splinetool/react-spline";
 import { BsVolumeUpFill, BsVolumeMuteFill } from "react-icons/bs";
 
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
@@ -42,7 +42,7 @@ export default function Page() {
   const [yesPressed, setYesPressed] = useState(false);
   const [currentAudio, setCurrentAudio] = useState(null); // Tracks the currently playing song
   const [currentGifIndex, setCurrentGifIndex] = useState(0); // Track the current gif index
-  const [isMuted, setIsMuted] = useState(false); // Mute state
+  const [isMuted, setIsMuted] = useState(false);
 
   const gifRef = useRef(null); // Ref to ensure gif plays infinitely
   const yesButtonSize = noCount * 20 + 16;
@@ -50,7 +50,7 @@ export default function Page() {
   // This ensures the "Yes" gif keeps restarting and playing infinitely
   useEffect(() => {
     if (gifRef.current && yesPressed) {
-      gifRef.current.src = YesGifs[currentGifIndex]; // Use the current gif
+      gifRef.current.src = YesGifs[currentGifIndex];
     }
   }, [yesPressed, currentGifIndex]);
 
@@ -58,10 +58,10 @@ export default function Page() {
   useEffect(() => {
     if (yesPressed) {
       const intervalId = setInterval(() => {
-        setCurrentGifIndex((prevIndex) => (prevIndex + 1) % YesGifs.length); // Cycle through the gifs
+        setCurrentGifIndex((prevIndex) => (prevIndex + 1) % YesGifs.length);
       }, 5000); // Change gif every 5 seconds
 
-      // Clear interval on unmount
+      // Clear the interval
       return () => clearInterval(intervalId);
     }
   }, [yesPressed]);
@@ -76,9 +76,8 @@ export default function Page() {
     const nextCount = noCount + 1;
     setNoCount(nextCount);
 
-    // Change GIF every press starting from the 7th "No"
-    if (nextCount >= 5) {
-      const nextGifIndex = (nextCount - 5) % NoGifs.length; // Start cycling through NoGifs after 7th press
+    if (nextCount >= 4) {
+      const nextGifIndex = (nextCount - 4) % NoGifs.length; // Start cycling through NoGifs
       if (gifRef.current) {
         gifRef.current.src = NoGifs[nextGifIndex];
       }
@@ -148,9 +147,9 @@ export default function Page() {
         {yesPressed ? (
           <>
             <img
-              ref={gifRef} // Attach ref to the gif
+              ref={gifRef}
               className="h-[230px] rounded-lg"
-              src={YesGifs[currentGifIndex]} // Always use the Yes GIFs in sequence
+              src={YesGifs[currentGifIndex]}
               alt="Yes Response"
             />
             <div className="text-4xl md:text-6xl font-bold my-4">Ok Yayyyyy!!!</div>
@@ -163,7 +162,7 @@ export default function Page() {
               alt="Love SVG"
             />
             <img
-              ref={gifRef} // Attach ref to the gif
+              ref={gifRef}
               className="h-[230px] rounded-lg"
               src={Lovegif}
               alt="Love Animation"
@@ -215,7 +214,6 @@ const Footer = () => {
     </a>
   );
 };
-
 
 // https://app.spline.design/file/48a9d880-40c9-4239-bd97-973aae012ee0
 // https://app.spline.design/file/72e6aee2-57ed-4698-afa7-430f8ed7bd87
