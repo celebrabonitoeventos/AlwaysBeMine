@@ -86,7 +86,7 @@ export default function Page() {
         src: heartGif,
         style: {
           ...newPosition,
-          animationDuration: `${Math.random() * 2 + 1}s`, // Randomize animation speed
+          animationDuration: `${Math.random() * 2 + 1}s`,
         },
       });
     }
@@ -107,7 +107,7 @@ export default function Page() {
         src: sadGif,
         style: {
           ...newPosition,
-          animationDuration: `${Math.random() * 2 + 1}s`, // Randomize animation speed
+          animationDuration: `${Math.random() * 2 + 1}s`,
         },
       });
     }
@@ -116,7 +116,7 @@ export default function Page() {
   };
   
   const handleMouseLeave = () => {
-    setFloatingGifs([]); // Clear the floating GIFs on mouse leave
+    setFloatingGifs([]); // floating GIFs on mouse leave
   };
 
   // This ensures the "Yes" gif keeps restarting and playing infinitely
@@ -308,6 +308,11 @@ const Footer = () => {
     </a>
   );
 };
+
+
+
+
+
 
 
 // ! Pathways-
