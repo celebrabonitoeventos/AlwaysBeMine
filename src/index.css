@@ -17,8 +17,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  background: url("./assets/bg1.webp");
+  /* background: url("./assets/bg1.webp"); */
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  overflow: hidden;
+}
+
+.animate-bounce {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
