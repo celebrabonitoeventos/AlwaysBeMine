@@ -4,7 +4,11 @@ import { BsVolumeUpFill, BsVolumeMuteFill } from "react-icons/bs";
 
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
 import Lovegif from "./assets/GifData/main_temp.gif";
+import heartGif from "./assets/GifData/Happy.gif";
+import sadGif from "./assets/GifData/sad.gif";
+import WordMareque from './MarqueeProposal.jsx';
 
+//! yes - Gifs Importing
 import yesgif0 from "./assets/GifData/Yes/lovecutie0.gif";
 import yesgif1 from "./assets/GifData/Yes/love2.gif";
 import yesgif2 from "./assets/GifData/Yes/love3.gif";
@@ -15,7 +19,9 @@ import yesgif6 from "./assets/GifData/Yes/lovecutie7.gif";
 import yesgif7 from "./assets/GifData/Yes/lovecutie8.gif";
 import yesgif8 from "./assets/GifData/Yes/lovecutie3.gif";
 import yesgif9 from "./assets/GifData/Yes/lovecutie9.gif";
-
+import yesgif10 from "./assets/GifData/Yes/lovecutie6.gif";
+import yesgif11 from "./assets/GifData/Yes/lovecutie4.gif";
+//! no - Gifs Importing
 import nogif0 from "./assets/GifData/No/breakRej0.gif";
 import nogif0_1 from "./assets/GifData/No/breakRej0_1.gif";
 import nogif1 from "./assets/GifData/No/breakRej1.gif";
@@ -25,22 +31,24 @@ import nogif4 from "./assets/GifData/No/breakRej4.gif";
 import nogif5 from "./assets/GifData/No/breakRej5.gif";
 import nogif6 from "./assets/GifData/No/breakRej6.gif";
 import nogif7 from "./assets/GifData/No/RejectNo.gif";
+import nogif8 from "./assets/GifData/No/breakRej7.gif";
 
+//! yes - Music Importing
 import yesmusic1 from "./assets/AudioTracks/Love_LoveMeLikeYouDo.mp3";
 import yesmusic2 from "./assets/AudioTracks/Love_EDPerfect.mp3";
+import yesmusic3 from "./assets/AudioTracks/Love_Nadaaniyan.mp3";
+import yesmusic4 from "./assets/AudioTracks/Love_JoTumMereHo.mp3";
+//! no - Music Importing
 import nomusic1 from "./assets/AudioTracks/Rejection_WeDontTalkAnyMore.mp3";
-import nomusic2 from "./assets/AudioTracks/Reject_withoutMe.mp3";
-import nomusic3 from "./assets/AudioTracks/Neutral_Base_IHateU.mp3";
-import nomusic4 from "./assets/AudioTracks/Reject1_TooGood.mp3";
+import nomusic2 from "./assets/AudioTracks/Rejection_LoseYouToLoveMe.mp3";
+import nomusic3 from "./assets/AudioTracks/Reject_withoutMe.mp3";
+import nomusic4 from "./assets/AudioTracks/Neutral_Base_IHateU.mp3";
+import nomusic5 from "./assets/AudioTracks/Reject1_TooGood.mp3";
 
-// import heartGif from "./assets/GifData/Heart.gif";
-import heartGif from "./assets/GifData/Happy.gif";
-import sadGif from "./assets/GifData/sad.gif";
-
-const YesGifs = [yesgif0, yesgif1, yesgif2, yesgif3, yesgif4, yesgif5, yesgif6, yesgif7, yesgif8, yesgif9];
-const NoGifs = [nogif0, nogif0_1, nogif1, nogif2, nogif3, nogif4, nogif5, nogif6, nogif7];
-const YesMusic = [yesmusic1, yesmusic2];
-const NoMusic = [nomusic1, nomusic2, nomusic3, nomusic4];
+const YesGifs = [yesgif0, yesgif1, yesgif2, yesgif3, yesgif4, yesgif5, yesgif6, yesgif7, yesgif8, yesgif9, yesgif10, yesgif11];
+const NoGifs = [nogif0, nogif0_1, nogif1, nogif2, nogif3, nogif4, nogif5, nogif6, nogif7, nogif8];
+const YesMusic = [yesmusic1, yesmusic3, yesmusic4, yesmusic2];
+const NoMusic = [nomusic1, nomusic2, nomusic3, nomusic4, nomusic5];
 
 export default function Page() {
   const [noCount, setNoCount] = useState(0);
@@ -50,7 +58,7 @@ export default function Page() {
   const [isMuted, setIsMuted] = useState(false);
 
   const gifRef = useRef(null); // Ref to ensure gif plays infinitely
-  const yesButtonSize = noCount * 20 + 16;
+  const yesButtonSize = noCount * 16 + 16;
 
   const [floatingGifs, setFloatingGifs] = useState([]); // Array to store active floating GIFs
   const generateRandomPositionWithSpacing = (existingPositions) => {
@@ -159,23 +167,28 @@ export default function Page() {
     // Play song on first press or every 7th press after
     if (nextCount === 1 || (nextCount - 1) % 7 === 0) {
       const nextSongIndex = Math.floor(nextCount / 7) % NoMusic.length;
-      playMusic(NoMusic[nextSongIndex]);
+      playMusic(NoMusic[nextSongIndex], NoMusic);
     }
   };
-
+  
   const handleYesClick = () => {
     setYesPressed(true);
-    playMusic(YesMusic[0]); // Play the first "Yes" music by default
+    playMusic(YesMusic[0], YesMusic); // Play the first "Yes" music by default
   };
-
-  const playMusic = (url) => {
+  
+  const playMusic = (url, musicArray) => {
     if (currentAudio) {
       currentAudio.pause(); // Stop the currently playing song
       currentAudio.currentTime = 0; // Reset to the start
     }
     const audio = new Audio(url);
-    audio.muted = isMuted; // Respect the mute state
+    audio.muted = isMuted;
     setCurrentAudio(audio); // Set the new audio as the current one
+    audio.addEventListener('ended', () => {
+      const currentIndex = musicArray.indexOf(url);
+      const nextIndex = (currentIndex + 1) % musicArray.length;
+      playMusic(musicArray[nextIndex], musicArray); // Play the next song in the correct array
+    });
     audio.play();
   };
 
@@ -234,7 +247,9 @@ export default function Page() {
               src={YesGifs[currentGifIndex]}
               alt="Yes Response"
             />
-            <div className="text-4xl md:text-6xl font-bold my-4">Ok Yayyyyy!!!</div>
+            <div className="text-4xl md:text-6xl font-bold my-2" style={{ fontFamily: "Charm, serif", fontWeight: "700", fontStyle: "normal" }}>I Love You !!!</div>
+            <div  className="text-4xl md:text-4xl font-bold my-1" style={{ fontFamily: "Beau Rivage, serif", fontWeight: "500", fontStyle: "normal" }}> You’re the love of my life. </div> 
+            <WordMareque />
           </>
         ) : (
           <>
