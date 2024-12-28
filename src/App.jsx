@@ -166,16 +166,16 @@ export default function Page() {
     // Play song on first press or every 7th press after
     if (nextCount === 1 || (nextCount - 1) % 7 === 0) {
       const nextSongIndex = Math.floor(nextCount / 7) % NoMusic.length;
-      playMusic(NoMusic[nextSongIndex]);
+      playMusic(NoMusic[nextSongIndex], NoMusic);
     }
   };
-
+  
   const handleYesClick = () => {
     setYesPressed(true);
-    playMusic(YesMusic[0]); // Play the first "Yes" music by default
+    playMusic(YesMusic[0], YesMusic); // Play the first "Yes" music by default
   };
-
-  const playMusic = (url) => {
+  
+  const playMusic = (url, musicArray) => {
     if (currentAudio) {
       currentAudio.pause(); // Stop the currently playing song
       currentAudio.currentTime = 0; // Reset to the start
@@ -184,9 +184,9 @@ export default function Page() {
     audio.muted = isMuted;
     setCurrentAudio(audio); // Set the new audio as the current one
     audio.addEventListener('ended', () => {
-      const currentIndex = YesMusic.indexOf(url); 
-      const nextIndex = (currentIndex + 1) % YesMusic.length;
-      playMusic(YesMusic[nextIndex]); // Play the next song
+      const currentIndex = musicArray.indexOf(url);
+      const nextIndex = (currentIndex + 1) % musicArray.length;
+      playMusic(musicArray[nextIndex], musicArray); // Play the next song in the correct array
     });
     audio.play();
   };
@@ -246,7 +246,8 @@ export default function Page() {
               src={YesGifs[currentGifIndex]}
               alt="Yes Response"
             />
-            <div className="text-4xl md:text-6xl font-bold my-4">Ok Yayyyyy!!!</div>
+            <div className="text-4xl md:text-6xl font-bold my-2">I Love You!!!</div>
+            <div  className="text-4xl md:text-4xl font-bold my-1"  style={{ fontFamily: "Beau Rivage, serif", fontWeight: "bold", fontStyle: "normal" }}> You’re the love of my life. </div> 
           </>
         ) : (
           <>
