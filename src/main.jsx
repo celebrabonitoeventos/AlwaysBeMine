@@ -14,6 +14,7 @@ function Root() {
 
   return (
     <React.StrictMode>
+      {/* <App /> */}
       {loading ? <Preloader /> : <App />}
     </React.StrictMode>
   );
