@@ -134,14 +134,14 @@ export default function Page() {
 
   // This ensures the "Yes" gif keeps restarting and playing infinitely
   useEffect(() => {
-    if (gifRef.current && yesPressed) {
+    if (gifRef.current && yesPressed && noCount>3) {
       gifRef.current.src = YesGifs[currentGifIndex];
     }
   }, [yesPressed, currentGifIndex]);
 
   // Use effect to change the Yes gif every 5 seconds
   useEffect(() => {
-    if (yesPressed) {
+    if (yesPressed && noCount>3) {
       const intervalId = setInterval(() => {
         setCurrentGifIndex((prevIndex) => (prevIndex + 1) % YesGifs.length);
       }, 5000); // Change gif every 5 seconds
@@ -176,8 +176,13 @@ export default function Page() {
   };
   
   const handleYesClick = () => {
-    setYesPressed(true);
-    playMusic(YesMusic[0], YesMusic); // Play the first "Yes" music by default
+    if(!popupShown){ // Only for Swal Fire Popup
+      setYesPressed(true);
+    }
+    else if(noCount>3){
+      setYesPressed(true);
+      playMusic(YesMusic[0], YesMusic); // Play the first "Yes" music by default
+    }
   };
   
   const playMusic = (url, musicArray) => {
@@ -259,6 +264,7 @@ export default function Page() {
         `,
       });
       setPopupShown(true);
+      setYesPressed(false);
     }
   }, [yesPressed, noCount, popupShown]);
 
@@ -269,7 +275,7 @@ export default function Page() {
         {/* <Spline scene="https://prod.spline.design/ZU2qkrU9Eyt1PHBx/scene.splinecode" /> */}
       </div>
       <div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-16 selection:bg-rose-600 selection:text-white text-zinc-900">
-        {yesPressed ? (
+        {yesPressed && noCount>3 ? (
           <>
             <img
               ref={gifRef}
