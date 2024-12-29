@@ -1,25 +1,26 @@
 # 🥰 Always Be Mine 🥰
 
-## Welcome to Valentine Proposal Website template! 💖<br/>
+## Welcome to the **Valentine Proposal Website Template**! 💖
 
-AlwaysBeMine is a fun and romantic project created to ask someone special, "Will you be my Valentine?" This simple and heartfelt idea combines coding creativity and love to make a meaningful and memorable moment and it's sure to melt hearts and create lasting memories. Perfect for anyone looking to express their feelings in a unique way! ❤️
+**AlwaysBeMine** is a delightful and romantic web template designed to ask someone special, "Will you be my Valentine?" With its cute design, charming animations, and heartfelt message, this website template offers a unique and memorable way to express your feelings. Whether you're celebrating Valentine's Day or just want to spread love, this project is sure to make the moment unforgettable.
 
+This template combines creativity and coding to create an experience that will leave a lasting impression. It's perfect for anyone looking to make their proposal or message stand out in a special & unique way. ❤️
 
+## ✨ Features
 
-## Features
+- **Playful Animations**: Enjoy a fun, engaging user experience with cute and playful animations.
+- **Interactive Elements**: Add exciting touches such as animations, background music, or surprise pop-ups to personalize your message.
+- **Images**: Lovely images and heartwarming messages.
+- **Beautiful Tag Lines**: Attractive and Loving Tag Lines.
+- **Sharing Options**: Share your virtual card easily via:
+  - **Social Media**: Share directly on your favorite platforms.
 
-- Interactive Elements:
-  - Add interactive elements like animations, music, or surprise pop-ups.
-  
-- Sharing Options:
-  - Share your virtual card via email, social media, or as a printable PDF.
+## 🚀 Getting Started
 
-## Screenshot: 
+To get started with this project, follow these steps:
 
-![image](https://github.com/user-attachments/assets/64bec88d-f6d4-4fa4-a16e-d1020b31af0a)
-![image](https://github.com/user-attachments/assets/487e985c-5bf5-414a-ba2d-156be14ba074)
-![image](https://github.com/user-attachments/assets/ff2f7914-28fe-4f18-9391-88f654f1222e)
-
-
-## 
-Happy Valentine's Day! 💘
+1. **Star the [Main Repository](https://github.com/UjjwalSaini07/AlwaysBeMine)**
+2. **Fork The [Repository](https://github.com/UjjwalSaini07/AlwaysBeMine)**
+3. **Clone the repository**
+4. **Install the Dependancies `npm/pnpm/bun install`**
+5. **Start the development server with `npm/pnpm/bun run dev`**
