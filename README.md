@@ -25,7 +25,7 @@ To get started with this project, follow these steps:
 4. **Install the Dependancies `npm/pnpm/bun install`**
 5. **Start the development server with `npm/pnpm/bun run dev`**
 
-## ScreenShots
+## 📷 ScreenShots
 
 Here’s a sneak peek of what you can expect from the template:
 ![image](https://github.com/user-attachments/assets/25282fce-12f0-4c0a-95ce-cda95a305e28)
