@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Spline from "@splinetool/react-spline";
+import Swal from "sweetalert2";
 import { BsVolumeUpFill, BsVolumeMuteFill } from "react-icons/bs";
 
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
@@ -7,6 +8,8 @@ import Lovegif from "./assets/GifData/main_temp.gif";
 import heartGif from "./assets/GifData/Happy.gif";
 import sadGif from "./assets/GifData/sad.gif";
 import WordMareque from './MarqueeProposal.jsx';
+import purposerose from './assets/GifData/RoseCute.gif';
+import swalbg from './assets/Lovingbg2_main.jpg';
 
 //! yes - Gifs Importing
 import yesgif0 from "./assets/GifData/Yes/lovecutie0.gif";
@@ -56,6 +59,7 @@ export default function Page() {
   const [currentAudio, setCurrentAudio] = useState(null); // Tracks the currently playing song
   const [currentGifIndex, setCurrentGifIndex] = useState(0); // Track the current gif index
   const [isMuted, setIsMuted] = useState(false);
+  const [popupShown, setPopupShown] = useState(false);
 
   const gifRef = useRef(null); // Ref to ensure gif plays infinitely
   const yesButtonSize = noCount * 16 + 16;
@@ -231,6 +235,25 @@ export default function Page() {
     
     return phrases[Math.min(noCount, phrases.length - 1)];
   };
+
+  useEffect(() => {
+    if (yesPressed && noCount < 4 && !popupShown) {
+      Swal.fire({
+        title: "I love you sooo Much ❤️, You’ve stolen my heart completely!!! 🥰💖 But itni pyaari ladki aur itni jaldi haan? Thoda aur nakhre karke mujhe tarpaao na! 🥰✨",
+        width: 700,
+        padding: "2em",
+        color: "#716add",
+        background: `#fff url(${swalbg})`,
+        backdrop: `
+          rgba(0,0,123,0.2)
+          url(${purposerose})
+          right
+          no-repeat
+        `,
+      });
+      setPopupShown(true);
+    }
+  }, [yesPressed, noCount, popupShown]);
 
   return (
     <>
