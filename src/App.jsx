@@ -5,7 +5,7 @@ import { BsVolumeUpFill, BsVolumeMuteFill } from "react-icons/bs";
 
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
 import Lovegif from "./assets/GifData/main_temp.gif";
-import heartGif from "./assets/GifData/Happy.gif";
+import heartGif from "./assets/GifData/happy.gif";
 import sadGif from "./assets/GifData/sad.gif";
 import WordMareque from './MarqueeProposal.jsx';
 import purposerose from './assets/GifData/RoseCute.gif';
