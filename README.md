@@ -40,7 +40,7 @@ Here’s a sneak peek of what you can expect from the template:
 ## 💕 Made with Love
 This project made with love by [Ujjwal](https://github.com/UjjwalSaini07). </br>Feel free to use it to ask your own special someone to be your Valentine! & express your feeling in unique and memorable way..
 
-## License
+## 📄 License
 License Credential [Check](https://github.com/UjjwalSaini07/AlwaysBeMine/blob/main/LICENSE). </br>You can use this project the way you want. Feel free to credit me if you want to!
 
 ## 💌 Feedback and Contributions
