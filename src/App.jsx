@@ -10,6 +10,7 @@ import sadGif from "./assets/GifData/sad.gif";
 import WordMareque from './MarqueeProposal.jsx';
 import purposerose from './assets/GifData/RoseCute.gif';
 import swalbg from './assets/Lovingbg2_main.jpg';
+import loveu from './assets/GifData/cutieSwal4.gif';
 
 //! yes - Gifs Importing
 import yesgif0 from "./assets/GifData/Yes/lovecutie0.gif";
@@ -60,6 +61,7 @@ export default function Page() {
   const [currentGifIndex, setCurrentGifIndex] = useState(0); // Track the current gif index
   const [isMuted, setIsMuted] = useState(false);
   const [popupShown, setPopupShown] = useState(false);
+  const [yespopupShown, setYesPopupShown] = useState(false);
 
   const gifRef = useRef(null); // Ref to ensure gif plays infinitely
   const yesButtonSize = noCount * 16 + 16;
@@ -179,7 +181,7 @@ export default function Page() {
     if(!popupShown){ // Only for Swal Fire Popup
       setYesPressed(true);
     }
-    else if(noCount>3){
+    if(noCount>3){
       setYesPressed(true);
       playMusic(YesMusic[0], YesMusic); // Play the first "Yes" music by default
     }
@@ -258,7 +260,7 @@ export default function Page() {
         background: `#fff url(${swalbg})`,
         backdrop: `
           rgba(0,0,123,0.2)
-          url(${purposerose})
+          url(${loveu})
           right
           no-repeat
         `,
@@ -267,6 +269,26 @@ export default function Page() {
       setYesPressed(false);
     }
   }, [yesPressed, noCount, popupShown]);
+  
+  useEffect(() => {
+    if (yesPressed && noCount > 3 && !yespopupShown) {
+      Swal.fire({
+        title: "I love you so much!! ❤️ You are my everything, my joy, my forever. Every moment with you is a memory I’ll cherish forever, and my heart beats only for you.</br> Will you be the love of my life forever?",
+        width: 800,
+        padding: "2em",
+        color: "#716add",
+        background: `#fff url(${swalbg})`,
+        backdrop: `
+          rgba(0,0,123,0.7)
+          url(${purposerose})
+          right
+          no-repeat
+        `,
+      });
+      setYesPopupShown(true);
+      setYesPressed(true);
+    }
+  }, [yesPressed, noCount, yespopupShown]);
 
   return (
     <>
