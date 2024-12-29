@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Spline from "@splinetool/react-spline";
+import Swal from "sweetalert2";
 import { BsVolumeUpFill, BsVolumeMuteFill } from "react-icons/bs";
 
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
@@ -7,6 +8,9 @@ import Lovegif from "./assets/GifData/main_temp.gif";
 import heartGif from "./assets/GifData/Happy.gif";
 import sadGif from "./assets/GifData/sad.gif";
 import WordMareque from './MarqueeProposal.jsx';
+import purposerose from './assets/GifData/RoseCute.gif';
+import swalbg from './assets/Lovingbg2_main.jpg';
+import loveu from './assets/GifData/cutieSwal4.gif';
 
 //! yes - Gifs Importing
 import yesgif0 from "./assets/GifData/Yes/lovecutie0.gif";
@@ -56,6 +60,8 @@ export default function Page() {
   const [currentAudio, setCurrentAudio] = useState(null); // Tracks the currently playing song
   const [currentGifIndex, setCurrentGifIndex] = useState(0); // Track the current gif index
   const [isMuted, setIsMuted] = useState(false);
+  const [popupShown, setPopupShown] = useState(false);
+  const [yespopupShown, setYesPopupShown] = useState(false);
 
   const gifRef = useRef(null); // Ref to ensure gif plays infinitely
   const yesButtonSize = noCount * 16 + 16;
@@ -130,14 +136,14 @@ export default function Page() {
 
   // This ensures the "Yes" gif keeps restarting and playing infinitely
   useEffect(() => {
-    if (gifRef.current && yesPressed) {
+    if (gifRef.current && yesPressed && noCount>3) {
       gifRef.current.src = YesGifs[currentGifIndex];
     }
   }, [yesPressed, currentGifIndex]);
 
   // Use effect to change the Yes gif every 5 seconds
   useEffect(() => {
-    if (yesPressed) {
+    if (yesPressed && noCount>3) {
       const intervalId = setInterval(() => {
         setCurrentGifIndex((prevIndex) => (prevIndex + 1) % YesGifs.length);
       }, 5000); // Change gif every 5 seconds
@@ -172,8 +178,13 @@ export default function Page() {
   };
   
   const handleYesClick = () => {
-    setYesPressed(true);
-    playMusic(YesMusic[0], YesMusic); // Play the first "Yes" music by default
+    if(!popupShown){ // Only for Swal Fire Popup
+      setYesPressed(true);
+    }
+    if(noCount>3){
+      setYesPressed(true);
+      playMusic(YesMusic[0], YesMusic); // Play the first "Yes" music by default
+    }
   };
   
   const playMusic = (url, musicArray) => {
@@ -232,6 +243,53 @@ export default function Page() {
     return phrases[Math.min(noCount, phrases.length - 1)];
   };
 
+  useEffect(() => {
+    if (yesPressed && noCount < 4 && !popupShown) {
+      Swal.fire({
+        title: "I love you sooo Much!!!❤️, You’ve stolen my heart completely!!! 🥰💖 But itni pyaari ladki aur itni jaldi haan? Thoda aur nakhre karke mujhe tarpaao na! 🥰✨",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        width: 700,
+        padding: "2em",
+        color: "#716add",
+        background: `#fff url(${swalbg})`,
+        backdrop: `
+          rgba(0,0,123,0.2)
+          url(${loveu})
+          right
+          no-repeat
+        `,
+      });
+      setPopupShown(true);
+      setYesPressed(false);
+    }
+  }, [yesPressed, noCount, popupShown]);
+  
+  useEffect(() => {
+    if (yesPressed && noCount > 3 && !yespopupShown) {
+      Swal.fire({
+        title: "I love you so much!! ❤️ You are my everything, my joy, my forever. Every moment with you is a memory I’ll cherish forever, and my heart beats only for you.</br> Will you be the love of my life forever?",
+        width: 800,
+        padding: "2em",
+        color: "#716add",
+        background: `#fff url(${swalbg})`,
+        backdrop: `
+          rgba(0,0,123,0.7)
+          url(${purposerose})
+          right
+          no-repeat
+        `,
+      });
+      setYesPopupShown(true);
+      setYesPressed(true);
+    }
+  }, [yesPressed, noCount, yespopupShown]);
+
   return (
     <>
       <div className="fixed top-0 left-0 w-screen h-screen -z-10">
@@ -239,7 +297,7 @@ export default function Page() {
         {/* <Spline scene="https://prod.spline.design/ZU2qkrU9Eyt1PHBx/scene.splinecode" /> */}
       </div>
       <div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-16 selection:bg-rose-600 selection:text-white text-zinc-900">
-        {yesPressed ? (
+        {yesPressed && noCount>3 ? (
           <>
             <img
               ref={gifRef}
