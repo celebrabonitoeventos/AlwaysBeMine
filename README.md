@@ -46,7 +46,6 @@ License Credential [Check](https://github.com/UjjwalSaini07/AlwaysBeMine/blob/ma
 ## 💌 Feedback and Contributions
 Feedback and contributions are always welcome! Feel free to open an [Issue](https://github.com/UjjwalSaini07/AlwaysBeMine/issues/new).
 
-
 <div align="center">
     <a href="#top">
         <img src="https://img.shields.io/badge/Back%20to%20Top-000000?style=for-the-badge&logo=github&logoColor=white" alt="Back to Top">
