@@ -2,17 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import "./MouseStealer.css";
 
 const CONSTANTS = {
-  assetPath: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/184729"
+  assetPath: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/184729",
 };
 
 const ASSETS = {
   head: `${CONSTANTS.assetPath}/head.svg`,
   waiting: `${CONSTANTS.assetPath}/hand.svg`,
   grabbing: `${CONSTANTS.assetPath}/hand.svg`,
-  grabbed: `${CONSTANTS.assetPath}/hand-with-cursor.svg`
+  grabbed: `${CONSTANTS.assetPath}/hand-with-cursor.svg`,
 };
 
-// Preload images
 Object.values(ASSETS).forEach((src) => {
   const img = new Image();
   img.src = src;
@@ -24,8 +23,11 @@ const GrabZone = ({ cursorGrabbed, onCursorGrabbed }) => {
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const isNear = e.clientX > window.innerWidth * 0.6 && e.clientX < window.innerWidth * 0.7;
-      const isIn = e.clientX >= window.innerWidth * 0.7;
+      const isNear =
+        e.clientX > window.innerWidth * 0.6 &&
+        e.clientX < window.innerWidth * 0.7 &&
+        e.clientY > window.innerHeight - 400;
+      const isIn = e.clientX >= window.innerWidth * 0.7 && e.clientY > window.innerHeight - 400;
       setNearZone(isNear);
       setInZone(isIn);
     };
@@ -65,7 +67,7 @@ const Grabber = ({ cursorGrabbed, onCursorGrabbed, active, near }) => {
 
   useEffect(() => {
     if (stealing) {
-      const timer = setTimeout(() => setStealing(false), 8000); // Reset after 7 seconds
+      const timer = setTimeout(() => setStealing(false), 8000); // Reset after 8 seconds
       return () => clearTimeout(timer);
     }
   }, [stealing]);
@@ -103,13 +105,21 @@ const App = () => {
 
   const handleCursorGrabbed = () => {
     setCursorGrabbed(true);
-    document.body.style.cursor = "none"; // Hide the cursor
+    document.body.style.cursor = "none"; // Hide cursor globally
+    const grabberElement = document.querySelector(".grabber");
+    if (grabberElement) {
+      grabberElement.style.cursor = "none"; // Hide cursor on grabber
+    }
+  
     setTimeout(() => {
       setCursorGrabbed(false);
-      document.body.style.cursor = ""; // Restore the cursor
-    }, 8000); // Release the cursor after 7 seconds
+      document.body.style.cursor = ""; 
+      if (grabberElement) {
+        grabberElement.style.cursor = ""; 
+      }
+    }, 8000); // Release the grab after 8 seconds
   };
-
+  
   return (
     <div>
       <GrabZone cursorGrabbed={cursorGrabbed} onCursorGrabbed={handleCursorGrabbed} />
@@ -118,8 +128,6 @@ const App = () => {
 };
 
 export default App;
-
-
 
 
 // Todo: Original Perfect Code 

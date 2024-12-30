@@ -1,9 +1,9 @@
 .grab-zone {
   position: fixed;
-  bottom: -300px;
-  left: 66%;
-  width: 280px;
-  height: 330px;
+  bottom: -280px;
+  left: 65.5%;
+  width: 240px;
+  height: 300px;
   transition: bottom 2s cubic-bezier(0.42, 0, 0.58, 1), transform 1s ease-in-out;
   z-index: 10;
   pointer-events: none;
@@ -11,24 +11,25 @@
 
 .grabber {
   position: relative;
-  width: 120px;
+  width: 105px;
   height: 140px;
   pointer-events: auto;
+  transform: translateX(-50%);
   transition: transform 0.8s ease, bottom 2s cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .grab-zone--peek {
-  bottom: -180px;
+  bottom: -150px;
 }
 
 .grab-zone--active {
-  bottom: 20px;
+  bottom: 50px;
 }
 
 .grabber__face {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   z-index: 5;
 }
 
@@ -51,11 +52,11 @@
 }
 
 .grabber__eye--left {
-  transform: translate(10px, 0);
+  transform: translate(20px, 0);
 }
 
 .grabber__eye--right {
-  transform: translate(-10px, 0);
+  transform: translate(-20px, 0);
 }
 
 .grabber--near .grabber__face {
@@ -64,7 +65,7 @@
 
 .grabber__hand {
   position: absolute;
-  bottom: -10px;
+  bottom: -15px;
   width: 55px;
   height: 75px;
   transform: translateX(-50%);
