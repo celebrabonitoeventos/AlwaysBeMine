@@ -3,6 +3,7 @@ import Spline from "@splinetool/react-spline";
 import Swal from "sweetalert2";
 import { BsVolumeUpFill, BsVolumeMuteFill } from "react-icons/bs";
 
+import MouseStealing from './MouseStealer.jsx';
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
 import Lovegif from "./assets/GifData/main_temp.gif";
 import heartGif from "./assets/GifData/happy.gif";
@@ -290,12 +291,33 @@ export default function Page() {
     }
   }, [yesPressed, noCount, yespopupShown]);
 
+  useEffect(() => {
+    if (noCount == 25) {
+      Swal.fire({
+        title: "My love for you is endless, like the stars in the sky—shining for you every night, even if you don’t always notice. 🌟 I’ll wait patiently, proving every day that you’re my everything. ❤️ Please press ‘Yes’ and let’s make this a forever story. 🥰✨<br/>'True love never gives up; it grows stronger with time.'",
+        width: 850,
+        padding: "2em",
+        color: "#716add",
+        background: `#fff url(${swalbg})`,
+        backdrop: `
+          rgba(0, 104, 123, 0.7)
+          url(${nogif1})
+          right
+          no-repeat
+        `,
+      });
+    }
+  }, [noCount]);
+
   return (
     <>
       <div className="fixed top-0 left-0 w-screen h-screen -z-10">
         <Spline scene="https://prod.spline.design/oSxVDduGPlsuUIvT/scene.splinecode" />
         {/* <Spline scene="https://prod.spline.design/ZU2qkrU9Eyt1PHBx/scene.splinecode" /> */}
       </div>
+
+      {noCount > 16 && noCount < 25 && yesPressed == false && <MouseStealing />}
+
       <div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-16 selection:bg-rose-600 selection:text-white text-zinc-900">
         {yesPressed && noCount>3 ? (
           <>

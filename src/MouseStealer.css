@@ -1,4 +1,108 @@
-.container {
+.grab-zone {
+  position: fixed;
+  bottom: -280px;
+  left: 65.5%;
+  width: 240px;
+  height: 300px;
+  transition: bottom 2s cubic-bezier(0.42, 0, 0.58, 1), transform 1s ease-in-out;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.grabber {
+  position: relative;
+  width: 105px;
+  height: 140px;
+  pointer-events: auto;
+  transform: translateX(-50%);
+  transition: transform 0.8s ease, bottom 2s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.grab-zone--peek {
+  bottom: -150px;
+}
+
+.grab-zone--active {
+  bottom: 50px;
+}
+
+.grabber__face {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  z-index: 5;
+}
+
+.grabber__eyes {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 50px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.grabber__eye {
+  width: 20px;
+  height: 20px;
+  background: #000;
+  border-radius: 50%;
+  transform-origin: center;
+}
+
+.grabber__eye--left {
+  transform: translate(20px, 0);
+}
+
+.grabber__eye--right {
+  transform: translate(-20px, 0);
+}
+
+.grabber--near .grabber__face {
+  animation: peek 1.2s ease-in-out infinite;
+}
+
+.grabber__hand {
+  position: absolute;
+  bottom: -15px;
+  width: 55px;
+  height: 75px;
+  transform: translateX(-50%);
+}
+
+.grabber--grabbed {
+  transform: translateY(-50px);
+}
+
+.grabber--stealing {
+  bottom: -300px !important;
+  animation: descend 2s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+@keyframes peek {
+  0%, 100% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes descend {
+  from {
+    bottom: 10px;
+    transform: scale(1.1);
+  }
+  to {
+    bottom: -300px;
+    transform: scale(1);
+  }
+}
+
+
+/* Todo: Main Styled Code */
+/* .container {
   max-width: 520px;
   margin: 0 auto;
   padding: 0 1rem 100px 1rem;
@@ -179,4 +283,4 @@
   100% {
     transform: scale(2.5) translateY(0%) rotate(20deg);
   }
-}
+} */
