@@ -291,6 +291,24 @@ export default function Page() {
     }
   }, [yesPressed, noCount, yespopupShown]);
 
+  useEffect(() => {
+    if (noCount == 25) {
+      Swal.fire({
+        title: "My love for you is endless, like the stars in the sky—shining for you every night, even if you don’t always notice. 🌟 I’ll wait patiently, proving every day that you’re my everything. ❤️ Please press ‘Yes’ and let’s make this a forever story. 🥰✨<br/>'True love never gives up; it grows stronger with time.'",
+        width: 850,
+        padding: "2em",
+        color: "#716add",
+        background: `#fff url(${swalbg})`,
+        backdrop: `
+          rgba(0, 104, 123, 0.7)
+          url(${nogif1})
+          right
+          no-repeat
+        `,
+      });
+    }
+  }, [noCount]);
+
   return (
     <>
       <div className="fixed top-0 left-0 w-screen h-screen -z-10">
