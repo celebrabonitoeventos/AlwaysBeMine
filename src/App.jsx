@@ -3,6 +3,7 @@ import Spline from "@splinetool/react-spline";
 import Swal from "sweetalert2";
 import { BsVolumeUpFill, BsVolumeMuteFill } from "react-icons/bs";
 
+import MouseStealing from './MouseStealer.jsx';
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
 import Lovegif from "./assets/GifData/main_temp.gif";
 import heartGif from "./assets/GifData/happy.gif";
@@ -296,6 +297,9 @@ export default function Page() {
         <Spline scene="https://prod.spline.design/oSxVDduGPlsuUIvT/scene.splinecode" />
         {/* <Spline scene="https://prod.spline.design/ZU2qkrU9Eyt1PHBx/scene.splinecode" /> */}
       </div>
+
+      {noCount > 16 && noCount < 25 && yesPressed == false && <MouseStealing />}
+
       <div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-16 selection:bg-rose-600 selection:text-white text-zinc-900">
         {yesPressed && noCount>3 ? (
           <>
