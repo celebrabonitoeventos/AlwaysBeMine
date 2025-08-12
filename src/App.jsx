@@ -334,7 +334,7 @@ export default function Page() {
       <button
         onClick={() =>
           window.open(
-            "https://wa.me/522222708631?text=Acabo%20de%20aceptar%20y%20quiero%20que%20sepas%20que%20te%20amo%20y%20comienza%20nuestra%20nueva%20historia%20juntos%20❤️",
+            "https://wa.me/522222708631?text=Vamos%20a%20intentarlo%20💖%20Desde%20hoy%20comienza%20nuestra%20nueva%20historia%20juntos%20❤️",
             "_blank"
           )
         }
