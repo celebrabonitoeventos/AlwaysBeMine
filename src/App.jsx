@@ -3,17 +3,17 @@ import Spline from "@splinetool/react-spline";
 import Swal from "sweetalert2";
 import { BsVolumeUpFill, BsVolumeMuteFill } from "react-icons/bs";
 
-import MouseStealing from './MouseStealer.jsx';
+import MouseStealing from "./MouseStealer.jsx";
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
 import Lovegif from "./assets/GifData/main_temp.gif";
 import heartGif from "./assets/GifData/happy.gif";
 import sadGif from "./assets/GifData/sad.gif";
-import WordMareque from './MarqueeProposal.jsx';
-import purposerose from './assets/GifData/RoseCute.gif';
-import swalbg from './assets/Lovingbg2_main.jpg';
-import loveu from './assets/GifData/cutieSwal4.gif';
+import WordMareque from "./MarqueeProposal.jsx";
+import purposerose from "./assets/GifData/RoseCute.gif";
+import swalbg from "./assets/Lovingbg2_main.jpg";
+import loveu from "./assets/GifData/cutieSwal4.gif";
 
-// yes gifs
+// Yes GIFs
 import yesgif0 from "./assets/GifData/Yes/lovecutie0.gif";
 import yesgif1 from "./assets/GifData/Yes/love2.gif";
 import yesgif2 from "./assets/GifData/Yes/love3.gif";
@@ -26,7 +26,8 @@ import yesgif8 from "./assets/GifData/Yes/lovecutie3.gif";
 import yesgif9 from "./assets/GifData/Yes/lovecutie9.gif";
 import yesgif10 from "./assets/GifData/Yes/lovecutie6.gif";
 import yesgif11 from "./assets/GifData/Yes/lovecutie4.gif";
-// no gifs
+
+// No GIFs
 import nogif0 from "./assets/GifData/No/breakRej0.gif";
 import nogif0_1 from "./assets/GifData/No/breakRej0_1.gif";
 import nogif1 from "./assets/GifData/No/breakRej1.gif";
@@ -38,7 +39,7 @@ import nogif6 from "./assets/GifData/No/breakRej6.gif";
 import nogif7 from "./assets/GifData/No/RejectNo.gif";
 import nogif8 from "./assets/GifData/No/breakRej7.gif";
 
-// music
+// Music
 import yesmusic1 from "./assets/AudioTracks/Love_LoveMeLikeYouDo.mp3";
 import yesmusic2 from "./assets/AudioTracks/Love_EDPerfect.mp3";
 import yesmusic3 from "./assets/AudioTracks/Love_Nadaaniyan.mp3";
@@ -49,15 +50,29 @@ import nomusic3 from "./assets/AudioTracks/Reject_withoutMe.mp3";
 import nomusic4 from "./assets/AudioTracks/Neutral_Base_IHateU.mp3";
 import nomusic5 from "./assets/AudioTracks/Reject1_TooGood.mp3";
 
-const YesGifs = [yesgif0, yesgif1, yesgif2, yesgif3, yesgif4, yesgif5, yesgif6, yesgif7, yesgif8, yesgif9, yesgif10, yesgif11];
+const YesGifs = [
+  yesgif0,
+  yesgif1,
+  yesgif2,
+  yesgif3,
+  yesgif4,
+  yesgif5,
+  yesgif6,
+  yesgif7,
+  yesgif8,
+  yesgif9,
+  yesgif10,
+  yesgif11,
+];
 const NoGifs = [nogif0, nogif0_1, nogif1, nogif2, nogif3, nogif4, nogif5, nogif6, nogif7, nogif8];
 const YesMusic = [yesmusic1, yesmusic3, yesmusic4, yesmusic2];
 const NoMusic = [nomusic1, nomusic2, nomusic3, nomusic4, nomusic5];
 
 export default function Page() {
+  // state
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
-  const [accepted, setAccepted] = useState(false);        // ← dentro del componente
+  const [accepted, setAccepted] = useState(false);
   const [currentAudio, setCurrentAudio] = useState(null);
   const [currentGifIndex, setCurrentGifIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
@@ -67,8 +82,8 @@ export default function Page() {
   const gifRef = useRef(null);
   const yesButtonSize = noCount * 16 + 16;
 
+  // floating gifs
   const [floatingGifs, setFloatingGifs] = useState([]);
-
   const generateRandomPositionWithSpacing = (existingPositions) => {
     let position;
     let tooClose;
@@ -91,32 +106,22 @@ export default function Page() {
     const gifs = [];
     const positions = [];
     for (let i = 0; i < 10; i++) {
-      const newPosition = generateRandomPositionWithSpacing(positions);
-      positions.push(newPosition);
-      gifs.push({
-        id: `heart-${i}`,
-        src: heartGif,
-        style: { ...newPosition, animationDuration: `${Math.random() * 2 + 1}s` },
-      });
+      const np = generateRandomPositionWithSpacing(positions);
+      positions.push(np);
+      gifs.push({ id: `heart-${i}`, src: heartGif, style: { ...np, animationDuration: `${Math.random() * 2 + 1}s` } });
     }
     setFloatingGifs(gifs);
   };
-
   const handleMouseEnterNo = () => {
     const gifs = [];
     const positions = [];
     for (let i = 0; i < 10; i++) {
-      const newPosition = generateRandomPositionWithSpacing(positions);
-      positions.push(newPosition);
-      gifs.push({
-        id: `sad-${i}`,
-        src: sadGif,
-        style: { ...newPosition, animationDuration: `${Math.random() * 2 + 1}s` },
-      });
+      const np = generateRandomPositionWithSpacing(positions);
+      positions.push(np);
+      gifs.push({ id: `sad-${i}`, src: sadGif, style: { ...np, animationDuration: `${Math.random() * 2 + 1}s` } });
     }
     setFloatingGifs(gifs);
   };
-
   const handleMouseLeave = () => setFloatingGifs([]);
 
   // keep updating current yes gif
@@ -126,19 +131,16 @@ export default function Page() {
     }
   }, [yesPressed, currentGifIndex]);
 
-  // rotate yes gifs every 5s while in yes state
+  // rotate yes gifs every 5s while yes screen is active
   useEffect(() => {
-    if (!yesPressed) return;
-    const id = setInterval(() => {
-      setCurrentGifIndex((i) => (i + 1) % YesGifs.length);
-    }, 5000);
+    if (!accepted) return;
+    const id = setInterval(() => setCurrentGifIndex((i) => (i + 1) % YesGifs.length), 5000);
     return () => clearInterval(id);
-  }, [yesPressed]);
+  }, [accepted]);
 
+  // reset GIF on changes to force loop
   useEffect(() => {
-    if (gifRef.current) {
-      gifRef.current.src = gifRef.current.src;
-    }
+    if (gifRef.current) gifRef.current.src = gifRef.current.src;
   }, [noCount]);
 
   const playMusic = (url, musicArray) => {
@@ -149,10 +151,10 @@ export default function Page() {
     const audio = new Audio(url);
     audio.muted = isMuted;
     setCurrentAudio(audio);
-    audio.addEventListener('ended', () => {
-      const currentIndex = musicArray.indexOf(url);
-      const nextIndex = (currentIndex + 1) % musicArray.length;
-      playMusic(musicArray[nextIndex], musicArray);
+    audio.addEventListener("ended", () => {
+      const idx = musicArray.indexOf(url);
+      const nextIdx = (idx + 1) % musicArray.length;
+      playMusic(musicArray[nextIdx], musicArray);
     });
     audio.play();
   };
@@ -173,7 +175,7 @@ export default function Page() {
   };
 
   const handleYesClick = async () => {
-    // show one (and only one) popup depending on attempts
+    // show a single popup depending on attempts
     if (noCount < 4 && !popupShown) {
       setPopupShown(true);
       await Swal.fire({
@@ -199,9 +201,9 @@ export default function Page() {
       });
     }
 
-    setAccepted(true);
-    setYesPressed(true);
-    playMusic(YesMusic[0], YesMusic); // switch to love music
+    setAccepted(true);     // ← esto activa la vista final (con botón de WhatsApp)
+    setYesPressed(true);   // ← se usa para rotación y música
+    playMusic(YesMusic[0], YesMusic);
   };
 
   const toggleMute = () => {
@@ -266,13 +268,20 @@ export default function Page() {
         {accepted ? (
           <>
             <img ref={gifRef} className="h-[230px] rounded-lg" src={YesGifs[currentGifIndex]} alt="Yes Response" />
-            <div className="text-4xl md:text-6xl font-bold my-2" style={{ fontFamily: "Charm, serif", fontWeight: 700 }}>
+            <div
+              className="text-4xl md:text-6xl font-bold my-2"
+              style={{ fontFamily: "Charm, serif", fontWeight: 700 }}
+            >
               Te Amo ❤️!!!
             </div>
-            <div className="text-4xl md:text-4xl font-bold my-1" style={{ fontFamily: "Beau Rivage, serif", fontWeight: 500 }}>
+            <div
+              className="text-4xl md:text-4xl font-bold my-1"
+              style={{ fontFamily: "Beau Rivage, serif", fontWeight: 500 }}
+            >
               Eres el amor de mi vida 🌹✨
             </div>
 
+            {/* WhatsApp button */}
             <button
               onClick={() =>
                 window.open(
@@ -289,7 +298,11 @@ export default function Page() {
           </>
         ) : (
           <>
-            <img src={lovesvg} className="fixed animate-pulse top-10 md:left-15 left-6 md:w-40 w-28" alt="Love SVG" />
+            <img
+              src={lovesvg}
+              className="fixed animate-pulse top-10 md:left-15 left-6 md:w-40 w-28"
+              alt="Love SVG"
+            />
             <img ref={gifRef} className="h-[230px] rounded-lg" src={Lovegif} alt="Love Animation" />
             <h1 className="text-4xl md:text-6xl my-4 text-center">¿Le damos otra oportunidad a nuestro amor?</h1>
 
@@ -314,12 +327,21 @@ export default function Page() {
             </div>
 
             {floatingGifs.map((gif) => (
-              <img key={gif.id} src={gif.src} alt="Floating Animation" className="absolute w-12 h-12 animate-bounce" style={gif.style} />
+              <img
+                key={gif.id}
+                src={gif.src}
+                alt="Floating Animation"
+                className="absolute w-12 h-12 animate-bounce"
+                style={gif.style}
+              />
             ))}
           </>
         )}
 
-        <button className="fixed bottom-10 right-10 bg-gray-200 p-1 mb-2 rounded-full hover:bg-gray-300" onClick={toggleMute}>
+        <button
+          className="fixed bottom-10 right-10 bg-gray-200 p-1 mb-2 rounded-full hover:bg-gray-300"
+          onClick={toggleMute}
+        >
           {isMuted ? <BsVolumeMuteFill size={26} /> : <BsVolumeUpFill size={26} />}
         </button>
 
