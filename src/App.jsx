@@ -247,7 +247,7 @@ export default function Page() {
   useEffect(() => {
     if (yesPressed && noCount < 4 && !popupShown) {
       Swal.fire({
-        title: "I love you sooo Much!!!❤️, You’ve stolen my heart completely!!! 🥰💖 But itni pyaari ladki aur itni jaldi haan? Thoda aur nakhre karke mujhe tarpaao na! 🥰✨",
+        title: "Acabas de tomar la mejor decisión de nuestras vidas ❤️ Hoy comienza una nueva historia para ti y para mí… una historia llena de amor, risas, aventuras y momentos que atesoraremos por siempre. Gracias por elegirme, Mayra 💕 Ahora caminaremos juntos hacia todo lo hermoso que nos espera.",
         showClass: {
           popup: `
             animate__animated
@@ -274,7 +274,7 @@ export default function Page() {
   useEffect(() => {
     if (yesPressed && noCount > 3 && !yespopupShown) {
       Swal.fire({
-        title: "I love you so much!! ❤️ You are my everything, my joy, my forever. Every moment with you is a memory I’ll cherish forever, and my heart beats only for you.</br> Will you be the love of my life forever?",
+        title: "De ahora en adelante, me dedicaré a hacerte sentir la mujer más amada del mundo 💖. Cuidaré tu corazón, te llenar é de detalles, sonrisas y abrazos infinitos, y cada día te recordaré lo afortunado que soy de tenerte, Mayra. Nuestro amor será mi prioridad, hoy y siempre. ❤️",
         width: 800,
         padding: "2em",
         color: "#716add",
@@ -327,8 +327,8 @@ export default function Page() {
               src={YesGifs[currentGifIndex]}
               alt="Yes Response"
             />
-            <div className="text-4xl md:text-6xl font-bold my-2" style={{ fontFamily: "Charm, serif", fontWeight: "700", fontStyle: "normal" }}>I Love You !!!</div>
-            <div  className="text-4xl md:text-4xl font-bold my-1" style={{ fontFamily: "Beau Rivage, serif", fontWeight: "500", fontStyle: "normal" }}> You’re the love of my life. </div> 
+            <div className="text-4xl md:text-6xl font-bold my-2" style={{ fontFamily: "Charm, serif", fontWeight: "700", fontStyle: "normal" }}>Te Amo  ❤️!!!</div>
+            <div  className="text-4xl md:text-4xl font-bold my-1" style={{ fontFamily: "Beau Rivage, serif", fontWeight: "500", fontStyle: "normal" }}> Eres el amor de mi vida 🌹✨</div> 
             <WordMareque />
           </>
         ) : (
@@ -345,7 +345,7 @@ export default function Page() {
               alt="Love Animation"
             />
             <h1 className="text-4xl md:text-6xl my-4 text-center">
-              Will you be my Valentine?
+              ¿Le damos otra oportunidad a nuestro amor?
             </h1>
             <div className="flex flex-wrap justify-center gap-2 items-center">
               <button
@@ -355,7 +355,7 @@ export default function Page() {
                 style={{ fontSize: yesButtonSize }}
                 onClick={handleYesClick}
               >
-                Yes
+                Si
               </button>
               <button
                 onMouseEnter={handleMouseEnterNo}
