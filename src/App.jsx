@@ -294,7 +294,7 @@ export default function Page() {
   useEffect(() => {
     if (noCount == 25) {
       Swal.fire({
-        title: "My love for you is endless, like the stars in the sky—shining for you every night, even if you don’t always notice. 🌟 I’ll wait patiently, proving every day that you’re my everything. ❤️ Please press ‘Yes’ and let’s make this a forever story. 🥰✨<br/>'True love never gives up; it grows stronger with time.'",
+        title: "💫❤️ Mayra… estamos a punto de comenzar una nueva vida juntos. Hoy soy un hombre distinto, más consciente, más fuerte y más enamorado que nunca. 🌹✨ Estoy listo para amarte, cuidarte y caminar a tu lado en cada paso que nos quede por vivir. 👫💍",
         width: 850,
         padding: "2em",
         color: "#716add",
