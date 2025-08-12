@@ -318,31 +318,19 @@ export default function Page() {
 
       {noCount > 16 && noCount < 25 && yesPressed == false && <MouseStealing />}
 
-<div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-16 selection:bg-rose-600 selection:text-white text-zinc-900">
-  {yesPressed && noCount > 3 ? (
-    <>
-      <img
-        ref={gifRef}
-        className="h-[230px] rounded-lg"
-        src={YesGifs[currentGifIndex]}
-        alt="Yes Response"
-      />
-      <div
-        className="text-4xl md:text-6xl font-bold my-2"
-        style={{ fontFamily: "Charm, serif", fontWeight: "700", fontStyle: "normal" }}
-      >
-        Te Amo ❤️!!!
-      </div>
-      <div
-        className="text-4xl md:text-4xl font-bold my-1"
-        style={{ fontFamily: "Beau Rivage, serif", fontWeight: "500", fontStyle: "normal" }}
-      >
-        Eres el amor de mi vida 🌹✨
-      </div>
-
-      <WordMareque />
-
-      {/* Botón de WhatsApp */}
+      <div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-16 selection:bg-rose-600 selection:text-white text-zinc-900">
+        {yesPressed && noCount>3 ? (
+          <>
+            <img
+              ref={gifRef}
+              className="h-[230px] rounded-lg"
+              src={YesGifs[currentGifIndex]}
+              alt="Yes Response"
+            />
+            <div className="text-4xl md:text-6xl font-bold my-2" style={{ fontFamily: "Charm, serif", fontWeight: "700", fontStyle: "normal" }}>Te Amo  ❤️!!!</div>
+            <div  className="text-4xl md:text-4xl font-bold my-1" style={{ fontFamily: "Beau Rivage, serif", fontWeight: "500", fontStyle: "normal" }}> Eres el amor de mi vida 🌹✨</div> 
+            
+             {/* Botón de WhatsApp */}
       <button
         onClick={() =>
           window.open(
@@ -352,11 +340,11 @@ export default function Page() {
         }
         className="mt-4 px-6 py-3 bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 transition"
       >
-        Enviar mensaje por WhatsApp 💬
+        Click para abrir la sorpresa
       </button>
-    </>
-  ) : null}
 
+            <WordMareque />
+          </>
         ) : (
           <>
             <img
